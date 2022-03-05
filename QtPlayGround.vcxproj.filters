@@ -19,16 +19,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="qml.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
-    <None Include="main.qml">
-      <Filter>Source Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="source\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="resource\qml.qrc">
+      <Filter>Resource Files</Filter>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resource\main.qml">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>
