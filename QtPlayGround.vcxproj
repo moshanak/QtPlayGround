@@ -86,12 +86,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\squircle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resource\qml.qrc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="resource\main.qml" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="source\squircle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
