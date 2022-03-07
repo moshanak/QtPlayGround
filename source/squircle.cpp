@@ -54,12 +54,16 @@
 #include <QOpenGLShaderProgram>
 #include <QOpenGLContext>
 #include <QtCore/QRunnable>
+#include <fstream>
 
 //! [7]
 Squircle::Squircle()
     : m_t(0)
     , m_renderer(nullptr)
 {
+    //ウィンドウに変化があったときに呼ばれるシグナルと接続する
+    //QQuickItem はデフォルトでは QQuickWindow に属していない（どこに描画するか決まっていない）
+    //どの QQuickWindow に属するか決まったタイミングと、QQuickWindow から外れるタイミングでも windowChanged シグナルは呼ばれる
     connect(this, &QQuickItem::windowChanged, this, &Squircle::handleWindowChanged);
 }
 //! [7]
@@ -71,8 +75,10 @@ void Squircle::setT(qreal t)
         return;
     m_t = t;
     emit tChanged();
-    if (window())
+    if (window()) {
+        //QQuickItem::update()ではなく、QQuickWindow::update()を呼んでいるのは、強制的に再描画を行うため
         window()->update();
+    }
 }
 //! [8]
 
@@ -80,7 +86,16 @@ void Squircle::setT(qreal t)
 void Squircle::handleWindowChanged(QQuickWindow *win)
 {
     if (win) {
+        //GUI スレッドをブロックする直前に呼ばれるシグナルを接続する
+        //このスロットで GUI の設定をレンダラーに渡す
+        //DirectConnection は RENDER スレッドで接続するために必須。
+        //これがないとレンダリングコンテキストが存在しないスレッドで接続されるケースが出てくる。
         connect(win, &QQuickWindow::beforeSynchronizing, this, &Squircle::sync, Qt::DirectConnection);
+
+        //レンダリングコンテキストが無効になったときに呼ばれるシグナルに接続する
+        //このスロットでレンダラーを破棄する
+        //DirectConnection は RENDER スレッドで接続するために必須。
+        //これがないとレンダリングコンテキストが存在しないスレッドで接続されるケースが出てくる。
         connect(win, &QQuickWindow::sceneGraphInvalidated, this, &Squircle::cleanup, Qt::DirectConnection);
 //! [1]
 //! [3]
@@ -101,13 +116,19 @@ class CleanupJob : public QRunnable
 {
 public:
     CleanupJob(SquircleRenderer *renderer) : m_renderer(renderer) { }
-    void run() override { delete m_renderer; }
+    void run() override { 
+        delete m_renderer; 
+    }
 private:
     SquircleRenderer *m_renderer;
 };
 
 void Squircle::releaseResources()
 {
+    //RENDER スレッドで OpenGL の終了処理を実行するために使う
+    //レンダリングしている時に、１度だけ実行する（one shot）タスクを予約する
+    //第一引数が実行タスク、第二引数でレンダリング中のどのタイミングで実行するか変更可
+    //Squircle::cleanup()でも同様の処理を記述しているが、それだけではすべてのケースの終了処理をカバーできないため、この処理が必要
     window()->scheduleRenderJob(new CleanupJob(m_renderer), QQuickWindow::BeforeSynchronizingStage);
     m_renderer = nullptr;
 }
@@ -123,7 +144,12 @@ void Squircle::sync()
 {
     if (!m_renderer) {
         m_renderer = new SquircleRenderer();
+        //レンダリング前に呼ばれるシグナルを接続する
+        //このスロットではOpenGLのAPIを直接呼ぶことが可能
         connect(window(), &QQuickWindow::beforeRendering, m_renderer, &SquircleRenderer::init, Qt::DirectConnection);
+        //beforeRendering のあとに呼ばれるシグナルを接続する
+        //RHIを使う場合、メインレンダリングパスのコマンドバッファに記録することが可能(vulkan,directxで考慮が必要)
+        //OpenGLのAPIを直接呼びたい場合は、このシグナルスロットではなく、前述のbeforeRenderingかafterRenderingシグナルを使う
         connect(window(), &QQuickWindow::beforeRenderPassRecording, m_renderer, &SquircleRenderer::paint, Qt::DirectConnection);
     }
     m_renderer->setViewportSize(window()->size() * window()->devicePixelRatio());
@@ -162,6 +188,13 @@ void SquircleRenderer::init()
         m_program->bindAttributeLocation("vertices", 0);
         m_program->link();
 
+        using namespace std;
+        ofstream ofs("log.txt");
+        ofs << "Vendor :" << glGetString(GL_VENDOR) << '\n';
+        ofs << "GPU : " << glGetString(GL_RENDERER) << '\n';
+        ofs << "OpenGL ver. " << glGetString(GL_VERSION) << '\n';
+        ofs << "【拡張機能一覧】" << endl;
+        ofs << glGetString(GL_EXTENSIONS) << endl;
     }
 }
 
