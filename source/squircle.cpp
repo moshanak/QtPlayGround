@@ -48,13 +48,15 @@
 **
 ****************************************************************************/
 
+#include "GL/glew.h"
 #include "squircle.h"
-
 #include <QtQuick/qquickwindow.h>
-#include <QOpenGLShaderProgram>
-#include <QOpenGLContext>
+//#include <QOpenGLShaderProgram>
+//#include <QOpenGLContext>
 #include <QtCore/QRunnable>
+#include <QQuickOpenGLUtils>
 #include <fstream>
+
 
 //! [7]
 Squircle::Squircle()
@@ -100,7 +102,7 @@ void Squircle::handleWindowChanged(QQuickWindow *win)
 //! [1]
 //! [3]
         // Ensure we start with cleared to black. The squircle's blend mode relies on this.
-        win->setColor(Qt::black);
+        //win->setColor(Qt::black);
     }
 }
 //! [3]
@@ -135,7 +137,7 @@ void Squircle::releaseResources()
 
 SquircleRenderer::~SquircleRenderer()
 {
-    delete m_program;
+//    delete m_program;
 }
 //! [6]
 
@@ -158,83 +160,111 @@ void Squircle::sync()
 }
 //! [9]
 
+bool test = true;
 //! [4]
 void SquircleRenderer::init()
 {
-    if (!m_program) {
-        QSGRendererInterface *rif = m_window->rendererInterface();
-        Q_ASSERT(rif->graphicsApi() == QSGRendererInterface::OpenGL);
+    //initializeOpenGLFunctions();
 
-        initializeOpenGLFunctions();
-
-        m_program = new QOpenGLShaderProgram();
-        m_program->addCacheableShaderFromSourceCode(QOpenGLShader::Vertex,
-                                                    "attribute highp vec4 vertices;"
-                                                    "varying highp vec2 coords;"
-                                                    "void main() {"
-                                                    "    gl_Position = vertices;"
-                                                    "    coords = vertices.xy;"
-                                                    "}");
-        m_program->addCacheableShaderFromSourceCode(QOpenGLShader::Fragment,
-                                                    "uniform lowp float t;"
-                                                    "varying highp vec2 coords;"
-                                                    "void main() {"
-                                                    "    lowp float i = 1. - (pow(abs(coords.x), 4.) + pow(abs(coords.y), 4.));"
-                                                    "    i = smoothstep(t - 0.8, t + 0.8, i);"
-                                                    "    i = floor(i * 20.) / 20.;"
-                                                    "    gl_FragColor = vec4(coords * .5 + .5, i, i);"
-                                                    "}");
-
-        m_program->bindAttributeLocation("vertices", 0);
-        m_program->link();
-
-        using namespace std;
-        ofstream ofs("log.txt");
-        ofs << "Vendor :" << glGetString(GL_VENDOR) << '\n';
-        ofs << "GPU : " << glGetString(GL_RENDERER) << '\n';
-        ofs << "OpenGL ver. " << glGetString(GL_VERSION) << '\n';
-        ofs << "【拡張機能一覧】" << endl;
-        ofs << glGetString(GL_EXTENSIONS) << endl;
+    QQuickOpenGLUtils::resetOpenGLState();
+    if (test) {
+        GLenum err = glewInit();
+        if (GLEW_OK != err)
+        {
+            using namespace std;
+            ofstream ofs("log.txt");
+            /* Problem: glewInit failed, something is seriously wrong. */
+            ofs << "Error: " << glewGetErrorString(err);
+            return;
+        }
+        test = false;
     }
+
+    //if (!m_program) {
+    //    QSGRendererInterface *rif = m_window->rendererInterface();
+    //    Q_ASSERT(rif->graphicsApi() == QSGRendererInterface::OpenGL);
+
+    //    initializeOpenGLFunctions();
+
+    //    m_program = new QOpenGLShaderProgram();
+    //    m_program->addCacheableShaderFromSourceCode(QOpenGLShader::Vertex,
+    //                                                "attribute highp vec4 vertices;"
+    //                                                "varying highp vec2 coords;"
+    //                                                "void main() {"
+    //                                                "    gl_Position = vertices;"
+    //                                                "    coords = vertices.xy;"
+    //                                                "}");
+    //    m_program->addCacheableShaderFromSourceCode(QOpenGLShader::Fragment,
+    //                                                "uniform lowp float t;"
+    //                                                "varying highp vec2 coords;"
+    //                                                "void main() {"
+    //                                                "    lowp float i = 1. - (pow(abs(coords.x), 4.) + pow(abs(coords.y), 4.));"
+    //                                                "    i = smoothstep(t - 0.8, t + 0.8, i);"
+    //                                                "    i = floor(i * 20.) / 20.;"
+    //                                                "    gl_FragColor = vec4(coords * .5 + .5, i, i);"
+    //                                                "}");
+
+    //    m_program->bindAttributeLocation("vertices", 0);
+    //    m_program->link();
+
+    //    using namespace std;
+    //    ofstream ofs("log.txt");
+    //    ofs << "Vendor :" << glGetString(GL_VENDOR) << '\n';
+    //    ofs << "GPU : " << glGetString(GL_RENDERER) << '\n';
+    //    ofs << "OpenGL ver. " << glGetString(GL_VERSION) << '\n';
+    //    ofs << "【拡張機能一覧】" << endl;
+    //    ofs << glGetString(GL_EXTENSIONS) << endl;
+    //}
 }
 
 //! [4] //! [5]
 void SquircleRenderer::paint()
 {
+    m_window->beginExternalCommands();
+    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    m_window->endExternalCommands();
+    //QQuickOpenGLUtils::resetOpenGLState();
+
+    ////m_window->beginExternalCommands();
+    //glClearColor(1.0f, 1.0f, 0.0f, 1.0f);
+    //glClear(GL_COLOR_BUFFER_BIT);
+    ////m_window->endExternalCommands();
+
     // Play nice with the RHI. Not strictly needed when the scenegraph uses
     // OpenGL directly.
-    m_window->beginExternalCommands();
+    //m_window->beginExternalCommands();
 
-    m_program->bind();
+    //m_program->bind();
 
-    m_program->enableAttributeArray(0);
+    //m_program->enableAttributeArray(0);
 
-    float values[] = {
-        -1, -1,
-        1, -1,
-        -1, 1,
-        1, 1
-    };
+    //float values[] = {
+    //    -1, -1,
+    //    1, -1,
+    //    -1, 1,
+    //    1, 1
+    //};
 
-    // This example relies on (deprecated) client-side pointers for the vertex
-    // input. Therefore, we have to make sure no vertex buffer is bound.
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    //// This example relies on (deprecated) client-side pointers for the vertex
+    //// input. Therefore, we have to make sure no vertex buffer is bound.
+    //glBindBuffer(GL_ARRAY_BUFFER, 0);
 
-    m_program->setAttributeArray(0, GL_FLOAT, values, 2);
-    m_program->setUniformValue("t", (float) m_t);
+    //m_program->setAttributeArray(0, GL_FLOAT, values, 2);
+    //m_program->setUniformValue("t", (float) m_t);
 
-    glViewport(0, 0, m_viewportSize.width(), m_viewportSize.height());
+    //glViewport(0, 0, m_viewportSize.width(), m_viewportSize.height());
 
-    glDisable(GL_DEPTH_TEST);
+    //glDisable(GL_DEPTH_TEST);
 
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+    //glEnable(GL_BLEND);
+    //glBlendFunc(GL_SRC_ALPHA, GL_ONE);
 
-    glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+    //glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 
-    m_program->disableAttributeArray(0);
-    m_program->release();
+    //m_program->disableAttributeArray(0);
+    //m_program->release();
 
-    m_window->endExternalCommands();
+    //m_window->endExternalCommands();
 }
 //! [5]
