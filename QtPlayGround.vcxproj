@@ -107,7 +107,7 @@
   <ItemGroup>
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\squircle.cpp" />
-    <ClCompile Include="source\TestView.cpp" />
+    <ClCompile Include="source\WindowMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resource\qml.qrc" />
@@ -120,7 +120,7 @@
     <QtMoc Include="header\squircle.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="header\TestView.h" />
+    <QtMoc Include="header\WindowMain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

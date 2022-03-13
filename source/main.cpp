@@ -2,7 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQuickView>
 #include "squircle.h"
-#include "TestView.h"
+#include "WindowMain.h"
 
 int main(int argc, char *argv[])
 {
@@ -26,18 +26,6 @@ int main(int argc, char *argv[])
 
     view.setSource(QUrl("qrc:///main.qml"));
     view.show();
-
-    //QQuickView view2(&view);
-    TestView view2(&view);
-
-    //ウィンドウのサイズが変化した時に、GUI も追従して自動でリサイズしてくれる設定
-    //もし QQuickView::SizeViewToRootObject をセットすれば、自動でリサイズしなくなる
-    view2.setResizeMode(QQuickView::SizeRootObjectToView);
-
-    view2.setSource(QUrl("qrc:///sub.qml"));
-    view2.show();
-
-//    view2.setParent(nullptr);
 
     return app.exec();
 }

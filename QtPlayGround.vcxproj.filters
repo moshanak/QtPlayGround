@@ -25,7 +25,7 @@
     <ClCompile Include="source\squircle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="source\TestView.cpp">
+    <ClCompile Include="source\WindowMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -46,10 +46,8 @@
     <QtMoc Include="header\squircle.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="header\TestView.h">
+    <QtMoc Include="header\WindowMain.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
+    </QtMoc>
   </ItemGroup>
 </Project>
