@@ -49,6 +49,9 @@
     <ClCompile Include="source\SceneBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\SceneGraphRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resource\qml.qrc">
@@ -86,6 +89,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="header\SceneGraph.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="header\SceneGraphRenderer.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

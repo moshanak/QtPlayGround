@@ -1,6 +1,7 @@
 #include <QGuiApplication>
-#include "squircle.h"
 #include "WindowMain.h"
+#include "SceneGraph.h"
+#include "squircle.h"
 
 int main(int argc, char *argv[])
 {
@@ -14,7 +15,8 @@ int main(int argc, char *argv[])
     //Qtで使用するグラフィックスライブラリを指定する
     QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
 
-    qmlRegisterType<Squircle>("squircle", 1, 0, "Squircle");
+//    qmlRegisterType<Squircle>("SceneGraph", 1, 0, "SceneGraph");
+    qmlRegisterType<SceneGraph>("SceneGraph", 1, 0, "SceneGraph");
 
     WindowMain mainWindow(nullptr);
     mainWindow.initialize();

@@ -110,6 +110,7 @@
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\SceneBase.cpp" />
     <ClCompile Include="source\SceneGraph.cpp" />
+    <ClCompile Include="source\SceneGraphRenderer.cpp" />
     <ClCompile Include="source\SceneMain.cpp" />
     <ClCompile Include="source\squircle.cpp" />
     <ClCompile Include="source\ViewBase.cpp" />
@@ -142,6 +143,7 @@
     <QtMoc Include="header\SceneBase.h" />
     <QtMoc Include="header\SceneGraph.h" />
     <QtMoc Include="header\SceneMain.h" />
+    <QtMoc Include="header\SceneGraphRenderer.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

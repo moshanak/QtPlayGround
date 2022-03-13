@@ -1,21 +1,26 @@
 #ifndef SCENEGRAPH_H
 #define SCENEGRAPH_H
-#include <QObject>
+#include <QQuickItem>
+#include "SceneGraphRenderer.h"
+//class SceneGraphRenderer;
 
-class SceneBase;
-
-class SceneGraph : public QObject
+class SceneGraph : public QQuickItem
 {
     Q_OBJECT
+    QML_ELEMENT
 public:
-    explicit SceneGraph(QObject* parent);
+    explicit SceneGraph();
 
 public slots:
-    void init();
-    void paint();
+    void sync();
+    void cleanup();
+
+private slots:
+    void handleWindowChanged(QQuickWindow* win);
 
 private:
-    std::vector<std::shared_ptr<SceneBase>> scenes_;
-    bool isGlewInit_;
+    void releaseResources() override;
+
+    SceneGraphRenderer* m_renderer;
 };
 #endif //SCENEGRAPH_H

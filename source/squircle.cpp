@@ -59,9 +59,11 @@
 
 
 //! [7]
+//Squircle::Squircle()
+//    : m_t(0)
+//    , m_renderer(nullptr)
 Squircle::Squircle()
-    : m_t(0)
-    , m_renderer(nullptr)
+    : m_renderer(nullptr)
 {
     //ウィンドウに変化があったときに呼ばれるシグナルと接続する
     //QQuickItem はデフォルトでは QQuickWindow に属していない（どこに描画するか決まっていない）
@@ -71,17 +73,17 @@ Squircle::Squircle()
 //! [7]
 
 //! [8]
-void Squircle::setT(qreal t)
-{
-    if (t == m_t)
-        return;
-    m_t = t;
-    emit tChanged();
-    if (window()) {
-        //QQuickItem::update()ではなく、QQuickWindow::update()を呼んでいるのは、強制的に再描画を行うため
-        window()->update();
-    }
-}
+//void Squircle::setT(qreal t)
+//{
+//    if (t == m_t)
+//        return;
+//    m_t = t;
+//    emit tChanged();
+//    if (window()) {
+//        //QQuickItem::update()ではなく、QQuickWindow::update()を呼んでいるのは、強制的に再描画を行うため
+//        window()->update();
+//    }
+//}
 //! [8]
 
 //! [1]
@@ -155,7 +157,7 @@ void Squircle::sync()
         connect(window(), &QQuickWindow::beforeRenderPassRecording, m_renderer, &SquircleRenderer::paint, Qt::DirectConnection);
     }
     m_renderer->setViewportSize(window()->size() * window()->devicePixelRatio());
-    m_renderer->setT(m_t);
+    //m_renderer->setT(m_t);
     m_renderer->setWindow(window());
 }
 //! [9]
@@ -166,7 +168,7 @@ void SquircleRenderer::init()
 {
     //initializeOpenGLFunctions();
 
-    QQuickOpenGLUtils::resetOpenGLState();
+    //QQuickOpenGLUtils::resetOpenGLState();
     if (test) {
         GLenum err = glewInit();
         if (GLEW_OK != err)
