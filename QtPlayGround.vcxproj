@@ -105,8 +105,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="source\ActorBase.cpp" />
+    <ClCompile Include="source\ActorTriangleTest.cpp" />
     <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\SceneBase.cpp" />
+    <ClCompile Include="source\SceneGraph.cpp" />
+    <ClCompile Include="source\SceneMain.cpp" />
     <ClCompile Include="source\squircle.cpp" />
+    <ClCompile Include="source\ViewBase.cpp" />
+    <ClCompile Include="source\ViewMain.cpp" />
     <ClCompile Include="source\WindowMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -115,12 +122,27 @@
   <ItemGroup>
     <None Include="resource\main.qml" />
     <None Include="resource\sub.qml" />
+    <None Include="resource\WindowMain.qml" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="header\squircle.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="header\WindowMain.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="header\ViewBase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="header\ViewMain.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\ActorBase.h" />
+    <ClInclude Include="header\ActorTriangleTest.h" />
+    <QtMoc Include="header\SceneBase.h" />
+    <QtMoc Include="header\SceneGraph.h" />
+    <QtMoc Include="header\SceneMain.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

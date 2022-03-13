@@ -1,6 +1,4 @@
 #include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QQuickView>
 #include "squircle.h"
 #include "WindowMain.h"
 
@@ -18,14 +16,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<Squircle>("squircle", 1, 0, "Squircle");
 
-    QQuickView view;
-
-    //ウィンドウのサイズが変化した時に、GUI も追従して自動でリサイズしてくれる設定
-    //もし QQuickView::SizeViewToRootObject をセットすれば、自動でリサイズしなくなる
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-
-    view.setSource(QUrl("qrc:///main.qml"));
-    view.show();
+    WindowMain mainWindow(nullptr);
+    mainWindow.initialize();
 
     return app.exec();
 }

@@ -28,6 +28,27 @@
     <ClCompile Include="source\WindowMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\ViewBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ViewMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SceneGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SceneMain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ActorBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ActorTriangleTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SceneBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resource\qml.qrc">
@@ -41,6 +62,9 @@
     <None Include="resource\sub.qml">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="resource\WindowMain.qml">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="header\squircle.h">
@@ -49,5 +73,31 @@
     <QtMoc Include="header\WindowMain.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="header\ViewBase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="header\ViewMain.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="header\SceneBase.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="header\SceneMain.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="header\SceneGraph.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\ActorBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\ActorTriangleTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
