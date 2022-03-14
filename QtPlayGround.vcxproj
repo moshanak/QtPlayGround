@@ -112,7 +112,6 @@
     <ClCompile Include="source\SceneGraph.cpp" />
     <ClCompile Include="source\SceneGraphRenderer.cpp" />
     <ClCompile Include="source\SceneMain.cpp" />
-    <ClCompile Include="source\squircle.cpp" />
     <ClCompile Include="source\ViewBase.cpp" />
     <ClCompile Include="source\ViewMain.cpp" />
     <ClCompile Include="source\WindowMain.cpp" />
@@ -124,9 +123,6 @@
     <None Include="resource\main.qml" />
     <None Include="resource\sub.qml" />
     <None Include="resource\WindowMain.qml" />
-  </ItemGroup>
-  <ItemGroup>
-    <QtMoc Include="header\squircle.h" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="header\WindowMain.h" />

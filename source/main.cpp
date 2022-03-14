@@ -1,7 +1,6 @@
 #include <QGuiApplication>
 #include "WindowMain.h"
 #include "SceneGraph.h"
-#include "squircle.h"
 
 int main(int argc, char *argv[])
 {
