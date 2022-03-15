@@ -1,11 +1,9 @@
 #ifndef SCENEBASE_H
 #define SCENEBASE_H
-#include <QObject>
 
-class SceneBase : public QObject
+class SceneBase
 {
-    Q_OBJECT
 public:
-    explicit SceneBase(QObject* parent);
+    SceneBase();
 };
 #endif //SCENEBASE_H

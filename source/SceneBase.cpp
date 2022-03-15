@@ -1,6 +1,5 @@
 #include "SceneBase.h"
 
-SceneBase::SceneBase(QObject* parent)
-	:QObject(parent)
+SceneBase::SceneBase()
 {
 }

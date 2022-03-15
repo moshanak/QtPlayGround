@@ -8,6 +8,10 @@ SceneGraphRenderer::SceneGraphRenderer(QObject* parent)
 {
 }
 
+SceneGraphRenderer::~SceneGraphRenderer()
+{
+}
+
 void SceneGraphRenderer::init()
 {
     if (isGlewInit_) {

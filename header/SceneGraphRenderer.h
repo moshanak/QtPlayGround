@@ -8,7 +8,14 @@ class SceneGraphRenderer : public QObject
 {
     Q_OBJECT
 public:
+    SceneGraphRenderer() = delete;
     explicit SceneGraphRenderer(QObject* parent);
+    ~SceneGraphRenderer();
+    SceneGraphRenderer(const SceneGraphRenderer&) = delete;
+    SceneGraphRenderer& operator=(const SceneGraphRenderer&) = delete;
+    SceneGraphRenderer(SceneGraphRenderer&&) = default;
+    SceneGraphRenderer& operator=(SceneGraphRenderer&&) = default;
+
 
     void setViewportSize(const QSize& size) { m_viewportSize = size; }
     void setWindow(QQuickWindow* window) { m_window = window; }

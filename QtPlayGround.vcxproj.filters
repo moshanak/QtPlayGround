@@ -76,12 +76,6 @@
     <QtMoc Include="header\ViewMain.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="header\SceneBase.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="header\SceneMain.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="header\SceneGraph.h">
       <Filter>Header Files</Filter>
     </QtMoc>
@@ -90,13 +84,16 @@
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\SceneBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\SceneMain.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="header\ActorBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\ActorTriangleTest.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

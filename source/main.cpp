@@ -14,7 +14,6 @@ int main(int argc, char *argv[])
     //Qtで使用するグラフィックスライブラリを指定する
     QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
 
-//    qmlRegisterType<Squircle>("SceneGraph", 1, 0, "SceneGraph");
     qmlRegisterType<SceneGraph>("SceneGraph", 1, 0, "SceneGraph");
 
     WindowMain mainWindow(nullptr);
