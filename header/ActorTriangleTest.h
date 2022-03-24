@@ -5,7 +5,8 @@
 class ActorTriangleTest : public ActorBase
 {
 public:
-    ActorTriangleTest();
+    ActorTriangleTest() = delete;
+    ActorTriangleTest(const int& actorID, std::shared_ptr<ActorBaseRenderer> actorRenderer);
     void initialize();
 };
 #endif //ACTORTRIANGLETEST_H

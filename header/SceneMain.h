@@ -8,9 +8,9 @@ class ActorBase;
 class SceneMain : public SceneBase
 {
 public:
-    SceneMain();
+    SceneMain() = delete;
+    SceneMain(const QString& sceneName, std::shared_ptr<SceneBaseRenderer> sceneRenderer);
+
     void initialize();
-private:
-    std::vector<std::shared_ptr<ActorBase>> actors_;
 };
 #endif //SCENEMAIN_H

@@ -1,10 +1,12 @@
 #include "SceneGraphRenderer.h"
+#include "SceneMainRenderer.h"
 #include <QQuickWindow>
 #include <GL/glew.h>
 
 SceneGraphRenderer::SceneGraphRenderer(QObject* parent)
     :QObject(parent)
-    ,isGlewInit_(true)
+    , m_window(nullptr)
+    , isGlewInit_(true)
 {
 }
 
@@ -27,10 +29,15 @@ void SceneGraphRenderer::init()
         isGlewInit_ = false;
     }
 }
+
+void SceneGraphRenderer::addSceneRenderer(std::shared_ptr<SceneBaseRenderer> sceneRenderer)
+{
+    sceneRenderers_.emplace(sceneRenderer->getSceneName(), sceneRenderer);
+}
+
 void SceneGraphRenderer::paint()
 {
     m_window->beginExternalCommands();
-    glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    sceneRenderers_.at(currentSceneName_)->draw();
     m_window->endExternalCommands();
 }

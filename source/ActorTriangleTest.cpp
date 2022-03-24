@@ -1,6 +1,7 @@
 #include "ActorTriangleTest.h"
 
-ActorTriangleTest::ActorTriangleTest()
+ActorTriangleTest::ActorTriangleTest(const int& actorID, std::shared_ptr<ActorBaseRenderer> actorRenderer)
+	:ActorBase(actorID, actorRenderer)
 {
 }
 

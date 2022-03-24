@@ -105,10 +105,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="header\SceneMainRenderer.cpp" />
     <ClCompile Include="source\ActorBase.cpp" />
+    <ClCompile Include="source\ActorBaseRenderer.cpp" />
     <ClCompile Include="source\ActorTriangleTest.cpp" />
+    <ClCompile Include="source\ActorTriangleTestRenderer.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\SceneBase.cpp" />
+    <ClCompile Include="source\SceneBaseRenderer.cpp" />
     <ClCompile Include="source\SceneGraph.cpp" />
     <ClCompile Include="source\SceneGraphRenderer.cpp" />
     <ClCompile Include="source\SceneMain.cpp" />
@@ -120,8 +124,7 @@
     <QtRcc Include="resource\qml.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resource\main.qml" />
-    <None Include="resource\sub.qml" />
+    <None Include="resource\ViewMain.qml" />
     <None Include="resource\WindowMain.qml" />
   </ItemGroup>
   <ItemGroup>
@@ -135,9 +138,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header\ActorBase.h" />
+    <ClInclude Include="header\ActorBaseRenderer.h" />
     <ClInclude Include="header\ActorTriangleTest.h" />
+    <ClInclude Include="header\ActorTriangleTestRenderer.h" />
     <ClInclude Include="header\SceneBase.h" />
+    <ClInclude Include="header\SceneMainRenderer.h" />
     <QtMoc Include="header\SceneGraph.h" />
+    <ClInclude Include="header\SceneBaseRenderer.h" />
     <ClInclude Include="header\SceneMain.h" />
     <QtMoc Include="header\SceneGraphRenderer.h" />
   </ItemGroup>

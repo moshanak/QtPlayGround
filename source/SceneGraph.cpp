@@ -1,12 +1,13 @@
 #include "SceneGraph.h"
 #include "SceneGraphRenderer.h"
 #include "SceneMain.h"
+#include "SceneMainRenderer.h"
 #include <QQuickWindow>
 #include <QRunnable>
 
 SceneGraph::SceneGraph()
     :QQuickItem(nullptr)
-    ,m_renderer(nullptr)
+    ,sceneGraphRenderer_(nullptr)
 {
     //ウィンドウに変化があったときに呼ばれるシグナルと接続する
     //QQuickItem はデフォルトでは QQuickWindow に属していない（どこに描画するか決まっていない）
@@ -28,15 +29,12 @@ void SceneGraph::handleWindowChanged(QQuickWindow* win)
         //DirectConnection は RENDER スレッドで接続するために必須。
         //これがないとレンダリングコンテキストが存在しないスレッドで接続されるケースが出てくる。
         connect(win, &QQuickWindow::sceneGraphInvalidated, this, &SceneGraph::cleanup, Qt::DirectConnection);
-
-        // Ensure we start with cleared to black. The squircle's blend mode relies on this.
-        //win->setColor(Qt::black);
     }
 }
 
 void SceneGraph::cleanup()
 {
-    m_renderer.release();
+    sceneGraphRenderer_.release();
 }
 
 void SceneGraph::releaseResources()
@@ -44,38 +42,46 @@ void SceneGraph::releaseResources()
     class CleanupJob : public QRunnable
     {
     public:
-        CleanupJob(std::unique_ptr<SceneGraphRenderer>&& renderer) : m_renderer(std::move(renderer)) { }
+        CleanupJob(std::unique_ptr<SceneGraphRenderer>&& renderer) : sceneGraphRenderer_(std::move(renderer)) { }
         void run() override {
-            m_renderer.release();
+            sceneGraphRenderer_.release();
         }
     private:
-        std::unique_ptr<SceneGraphRenderer> m_renderer;
+        std::unique_ptr<SceneGraphRenderer> sceneGraphRenderer_;
     };
 
     //RENDER スレッドで OpenGL の終了処理を実行するために使う
     //レンダリングしている時に、１度だけ実行する（one shot）タスクを予約する
     //第一引数が実行タスク、第二引数でレンダリング中のどのタイミングで実行するか変更可
     //Squircle::cleanup()でも同様の処理を記述しているが、それだけではすべてのケースの終了処理をカバーできないため、この処理が必要
-    window()->scheduleRenderJob(new CleanupJob(std::move(m_renderer)), QQuickWindow::BeforeSynchronizingStage);
+    window()->scheduleRenderJob(new CleanupJob(std::move(sceneGraphRenderer_)), QQuickWindow::BeforeSynchronizingStage);
 }
 
 void SceneGraph::sync()
 {
-    if (!m_renderer) {
-        m_renderer = std::make_unique<SceneGraphRenderer>(nullptr);
-
-        std::shared_ptr<SceneMain> mainScene = std::make_shared<SceneMain>();
-        mainScene->initialize();
-        scenes_.push_back(mainScene);
-
+    if (!sceneGraphRenderer_) {
+        sceneGraphRenderer_ = std::make_unique<SceneGraphRenderer>(nullptr);
         //レンダリング前に呼ばれるシグナルを接続する
         //このスロットではOpenGLのAPIを直接呼ぶことが可能
-        connect(window(), &QQuickWindow::beforeRendering, m_renderer.get(), &SceneGraphRenderer::init, Qt::DirectConnection);
+        connect(window(), &QQuickWindow::beforeRendering, sceneGraphRenderer_.get(), &SceneGraphRenderer::init, Qt::DirectConnection);
         //beforeRendering のあとに呼ばれるシグナルを接続する
         //RHIを使う場合、メインレンダリングパスのコマンドバッファに記録することが可能(vulkan,directxで考慮が必要)
         //OpenGLのAPIを直接呼びたい場合は、このシグナルスロットではなく、前述のbeforeRenderingかafterRenderingシグナルを使う
-        connect(window(), &QQuickWindow::beforeRenderPassRecording, m_renderer.get(), &SceneGraphRenderer::paint, Qt::DirectConnection);
+        connect(window(), &QQuickWindow::beforeRenderPassRecording, sceneGraphRenderer_.get(), &SceneGraphRenderer::paint, Qt::DirectConnection);
     }
-    m_renderer->setViewportSize(window()->size() * window()->devicePixelRatio());
-    m_renderer->setWindow(window());
+
+    //<todo>: GUIからイベントをもらってから、シーンを作る仕組みにした方がよい
+    if (scenes_.empty()) {
+        const QString sceneName("main");
+        std::shared_ptr<SceneMainRenderer> sceneMainRenderer = std::make_shared<SceneMainRenderer>(sceneName);
+        std::shared_ptr<SceneMain> mainScene = std::make_shared<SceneMain>(sceneName, sceneMainRenderer);
+        mainScene->initialize();
+        scenes_.emplace(sceneName, mainScene);
+        sceneGraphRenderer_->addSceneRenderer(sceneMainRenderer);
+        currentSceneName_ = sceneName;
+    }
+
+    sceneGraphRenderer_->setViewportSize(window()->size() * window()->devicePixelRatio());
+    sceneGraphRenderer_->setWindow(window());
+    sceneGraphRenderer_->setCurrentSceneName(currentSceneName_);
 }

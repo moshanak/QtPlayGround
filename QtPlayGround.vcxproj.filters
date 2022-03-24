@@ -49,6 +49,18 @@
     <ClCompile Include="source\SceneGraphRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\SceneBaseRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="header\SceneMainRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ActorBaseRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ActorTriangleTestRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resource\qml.qrc">
@@ -56,13 +68,10 @@
     </QtRcc>
   </ItemGroup>
   <ItemGroup>
-    <None Include="resource\main.qml">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="resource\sub.qml">
-      <Filter>Resource Files</Filter>
-    </None>
     <None Include="resource\WindowMain.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\ViewMain.qml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
@@ -94,6 +103,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="header\ActorTriangleTest.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\SceneBaseRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\SceneMainRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\ActorBaseRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="header\ActorTriangleTestRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

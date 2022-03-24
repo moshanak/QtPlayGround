@@ -8,6 +8,6 @@ ViewMain::ViewMain(QWindow* parent)
 void ViewMain::initialize()
 {
 	setResizeMode(QQuickView::SizeRootObjectToView);
-	setSource(QUrl("qrc:///main.qml"));
+	setSource(QUrl("qrc:///ViewMain.qml"));
 	show();
 }

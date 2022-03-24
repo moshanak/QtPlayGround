@@ -8,7 +8,9 @@ class WindowMain : public QQuickView
 {
     Q_OBJECT
 public:
+    WindowMain() = delete;
     explicit WindowMain(QWindow* parent);
+
     void initialize();
 
 private:
