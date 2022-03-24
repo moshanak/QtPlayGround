@@ -1,5 +1,6 @@
 #include "SceneGraphRenderer.h"
 #include "SceneMainRenderer.h"
+#include "GLSLManager.h"
 #include <QQuickWindow>
 #include <GL/glew.h>
 
@@ -27,6 +28,9 @@ void SceneGraphRenderer::init()
             return;
         }
         isGlewInit_ = false;
+
+        // シェーダーの初期化
+        GLSLManager::getInstance();
     }
 }
 

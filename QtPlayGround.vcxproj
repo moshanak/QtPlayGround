@@ -110,6 +110,9 @@
     <ClCompile Include="source\ActorBaseRenderer.cpp" />
     <ClCompile Include="source\ActorTriangleTest.cpp" />
     <ClCompile Include="source\ActorTriangleTestRenderer.cpp" />
+    <ClCompile Include="source\GLSL.cpp" />
+    <ClCompile Include="source\GLSLManager.cpp" />
+    <ClCompile Include="source\GLSLPassthrough.cpp" />
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\SceneBase.cpp" />
     <ClCompile Include="source\SceneBaseRenderer.cpp" />
@@ -141,6 +144,9 @@
     <ClInclude Include="header\ActorBaseRenderer.h" />
     <ClInclude Include="header\ActorTriangleTest.h" />
     <ClInclude Include="header\ActorTriangleTestRenderer.h" />
+    <ClInclude Include="header\GLSL.h" />
+    <ClInclude Include="header\GLSLManager.h" />
+    <ClInclude Include="header\GLSLPassthrough.h" />
     <ClInclude Include="header\SceneBase.h" />
     <ClInclude Include="header\SceneMainRenderer.h" />
     <QtMoc Include="header\SceneGraph.h" />
