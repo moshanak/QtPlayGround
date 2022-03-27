@@ -1,7 +1,6 @@
 #include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QQuickView>
-#include "squircle.h"
+#include "WindowMain.h"
+#include "SceneGraph.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,16 +14,10 @@ int main(int argc, char *argv[])
     //Qtで使用するグラフィックスライブラリを指定する
     QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
 
-    qmlRegisterType<Squircle>("squircle", 1, 0, "Squircle");
+    qmlRegisterType<SceneGraph>("SceneGraph", 1, 0, "SceneGraph");
 
-    QQuickView view;
-
-    //ウィンドウのサイズが変化した時に、GUI も追従して自動でリサイズしてくれる設定
-    //もし QQuickView::SizeViewToRootObject をセットすれば、自動でリサイズしなくなる
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-
-    view.setSource(QUrl("qrc:///main.qml"));
-    view.show();
+    WindowMain mainWindow(nullptr);
+    mainWindow.initialize();
 
     return app.exec();
 }

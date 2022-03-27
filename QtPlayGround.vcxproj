@@ -62,7 +62,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)header;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -71,7 +71,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)header;$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -105,17 +105,54 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="header\SceneMainRenderer.cpp" />
+    <ClCompile Include="source\ActorBase.cpp" />
+    <ClCompile Include="source\ActorBaseRenderer.cpp" />
+    <ClCompile Include="source\ActorTriangle.cpp" />
+    <ClCompile Include="source\ActorTriangleRenderer.cpp" />
+    <ClCompile Include="source\GLSL.cpp" />
+    <ClCompile Include="source\GLSLManager.cpp" />
+    <ClCompile Include="source\GLSLPassthrough.cpp" />
     <ClCompile Include="source\main.cpp" />
-    <ClCompile Include="source\squircle.cpp" />
+    <ClCompile Include="source\SceneBase.cpp" />
+    <ClCompile Include="source\SceneBaseRenderer.cpp" />
+    <ClCompile Include="source\SceneGraph.cpp" />
+    <ClCompile Include="source\SceneGraphRenderer.cpp" />
+    <ClCompile Include="source\SceneMain.cpp" />
+    <ClCompile Include="source\ViewBase.cpp" />
+    <ClCompile Include="source\ViewMain.cpp" />
+    <ClCompile Include="source\WindowMain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resource\qml.qrc" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resource\main.qml" />
+    <None Include="resource\ViewMain.qml" />
+    <None Include="resource\WindowMain.qml" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="source\squircle.h" />
+    <QtMoc Include="header\WindowMain.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="header\ViewBase.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="header\ViewMain.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="header\ActorBase.h" />
+    <ClInclude Include="header\ActorBaseRenderer.h" />
+    <ClInclude Include="header\ActorTriangle.h" />
+    <ClInclude Include="header\ActorTriangleRenderer.h" />
+    <ClInclude Include="header\GLSL.h" />
+    <ClInclude Include="header\GLSLManager.h" />
+    <ClInclude Include="header\GLSLPassthrough.h" />
+    <ClInclude Include="header\SceneBase.h" />
+    <ClInclude Include="header\SceneMainRenderer.h" />
+    <QtMoc Include="header\SceneGraph.h" />
+    <ClInclude Include="header\SceneBaseRenderer.h" />
+    <ClInclude Include="header\SceneMain.h" />
+    <QtMoc Include="header\SceneGraphRenderer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
