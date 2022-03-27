@@ -1,6 +1,6 @@
 #include "SceneMain.h"
-#include "ActorTriangleTest.h"
-#include "ActorTriangleTestRenderer.h"
+#include "ActorTriangle.h"
+#include "ActorTriangleRenderer.h"
 
 SceneMain::SceneMain(const QString& sceneName, std::shared_ptr<SceneBaseRenderer> sceneRenderer)
 	: SceneBase(sceneName, sceneRenderer)
@@ -10,7 +10,7 @@ SceneMain::SceneMain(const QString& sceneName, std::shared_ptr<SceneBaseRenderer
 void SceneMain::initialize()
 {
 	const int actorID = 0;
-	std::shared_ptr<ActorTriangleTestRenderer> actorTriangleTestRenderer = std::make_shared<ActorTriangleTestRenderer>(actorID);
-	std::shared_ptr<ActorTriangleTest> actorTriangleTest = std::make_shared<ActorTriangleTest>(actorID, actorTriangleTestRenderer);
+	std::shared_ptr<ActorTriangleRenderer> actorTriangleTestRenderer = std::make_shared<ActorTriangleRenderer>(actorID);
+	std::shared_ptr<ActorTriangle> actorTriangleTest = std::make_shared<ActorTriangle>(actorID, actorTriangleTestRenderer);
 	addActor(actorTriangleTest, actorTriangleTestRenderer);
 }

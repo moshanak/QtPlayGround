@@ -108,8 +108,8 @@
     <ClCompile Include="header\SceneMainRenderer.cpp" />
     <ClCompile Include="source\ActorBase.cpp" />
     <ClCompile Include="source\ActorBaseRenderer.cpp" />
-    <ClCompile Include="source\ActorTriangleTest.cpp" />
-    <ClCompile Include="source\ActorTriangleTestRenderer.cpp" />
+    <ClCompile Include="source\ActorTriangle.cpp" />
+    <ClCompile Include="source\ActorTriangleRenderer.cpp" />
     <ClCompile Include="source\GLSL.cpp" />
     <ClCompile Include="source\GLSLManager.cpp" />
     <ClCompile Include="source\GLSLPassthrough.cpp" />
@@ -142,8 +142,8 @@
   <ItemGroup>
     <ClInclude Include="header\ActorBase.h" />
     <ClInclude Include="header\ActorBaseRenderer.h" />
-    <ClInclude Include="header\ActorTriangleTest.h" />
-    <ClInclude Include="header\ActorTriangleTestRenderer.h" />
+    <ClInclude Include="header\ActorTriangle.h" />
+    <ClInclude Include="header\ActorTriangleRenderer.h" />
     <ClInclude Include="header\GLSL.h" />
     <ClInclude Include="header\GLSLManager.h" />
     <ClInclude Include="header\GLSLPassthrough.h" />

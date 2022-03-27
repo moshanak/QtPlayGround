@@ -1,11 +1,11 @@
 #ifndef ACTORTRIANGLETESTRENDERER_H
 #define ACTORTRIANGLETESTRENDERER_H
 #include "ActorBaseRenderer.h"
-class ActorTriangleTestRenderer : public ActorBaseRenderer
+class ActorTriangleRenderer : public ActorBaseRenderer
 {
 public:
-    ActorTriangleTestRenderer() = delete;
-    ActorTriangleTestRenderer(const int& actorID);
+    ActorTriangleRenderer() = delete;
+    ActorTriangleRenderer(const int& actorID);
 
     void draw() final;
 };

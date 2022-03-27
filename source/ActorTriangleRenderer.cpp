@@ -1,14 +1,14 @@
-#include "ActorTriangleTestRenderer.h"
+#include "ActorTriangleRenderer.h"
 #include "GLSLManager.h"
 #include <vector>
 #include <array>
 
-ActorTriangleTestRenderer::ActorTriangleTestRenderer(const int& actorID)
+ActorTriangleRenderer::ActorTriangleRenderer(const int& actorID)
 	:ActorBaseRenderer(actorID)
 {
 }
 
-void ActorTriangleTestRenderer::draw()
+void ActorTriangleRenderer::draw()
 {
 	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
