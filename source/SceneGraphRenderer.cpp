@@ -42,6 +42,7 @@ void SceneGraphRenderer::addSceneRenderer(std::shared_ptr<SceneBaseRenderer> sce
 void SceneGraphRenderer::paint()
 {
     m_window->beginExternalCommands();
+    glViewport(0, 0, m_viewportSize.width(), m_viewportSize.height());
     sceneRenderers_.at(currentSceneName_)->draw();
     m_window->endExternalCommands();
 }

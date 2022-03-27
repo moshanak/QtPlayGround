@@ -3,8 +3,8 @@ import QtQuick.Window 2.2
 import SceneGraph 1.0
 
 Item {
-    width: 640
-    height: 480
+    //width: parent.width
+    //height: parent.height
 
     SceneGraph {
     }

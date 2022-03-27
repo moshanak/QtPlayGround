@@ -7,7 +7,7 @@ class ViewBase : public QQuickView
     Q_OBJECT
 public:
     ViewBase() = delete;
-    explicit ViewBase(QWindow* parent);
+    explicit ViewBase(QQuickView* parent);
     virtual ~ViewBase();
 };
 #endif //VIEWBASE_H

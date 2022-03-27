@@ -7,7 +7,7 @@ class ViewMain : public ViewBase
     Q_OBJECT
 public:
     ViewMain() = delete;
-    explicit ViewMain(QWindow* parent);
+    explicit ViewMain(QQuickView* parent);
     void initialize();
 };
 #endif //VIEWMAIN_H

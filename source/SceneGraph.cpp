@@ -81,6 +81,9 @@ void SceneGraph::sync()
         currentSceneName_ = sceneName;
     }
 
+    QSize test=window()->size();
+    qreal test2=window()->devicePixelRatio();
+
     sceneGraphRenderer_->setViewportSize(window()->size() * window()->devicePixelRatio());
     sceneGraphRenderer_->setWindow(window());
     sceneGraphRenderer_->setCurrentSceneName(currentSceneName_);
