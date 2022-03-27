@@ -70,6 +70,9 @@
     <ClCompile Include="source\ActorTriangleRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\ViewLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resource\qml.qrc">
@@ -81,6 +84,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="resource\ViewMain.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\ViewLog.qml">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="resource\ViewLogForm.ui.qml">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
@@ -98,6 +107,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="header\SceneGraphRenderer.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="header\ViewLog.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

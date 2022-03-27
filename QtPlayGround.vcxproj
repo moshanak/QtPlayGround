@@ -120,6 +120,7 @@
     <ClCompile Include="source\SceneGraphRenderer.cpp" />
     <ClCompile Include="source\SceneMain.cpp" />
     <ClCompile Include="source\ViewBase.cpp" />
+    <ClCompile Include="source\ViewLog.cpp" />
     <ClCompile Include="source\ViewMain.cpp" />
     <ClCompile Include="source\WindowMain.cpp" />
   </ItemGroup>
@@ -127,6 +128,8 @@
     <QtRcc Include="resource\qml.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resource\ViewLog.qml" />
+    <None Include="resource\ViewLogForm.ui.qml" />
     <None Include="resource\ViewMain.qml" />
     <None Include="resource\WindowMain.qml" />
   </ItemGroup>
@@ -149,6 +152,7 @@
     <ClInclude Include="header\GLSLPassthrough.h" />
     <ClInclude Include="header\SceneBase.h" />
     <ClInclude Include="header\SceneMainRenderer.h" />
+    <QtMoc Include="header\ViewLog.h" />
     <QtMoc Include="header\SceneGraph.h" />
     <ClInclude Include="header\SceneBaseRenderer.h" />
     <ClInclude Include="header\SceneMain.h" />

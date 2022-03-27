@@ -2,5 +2,7 @@
     <qresource prefix="/">
         <file>WindowMain.qml</file>
         <file>ViewMain.qml</file>
+        <file>ViewLog.qml</file>
+        <file>ViewLogForm.ui.qml</file>
     </qresource>
 </RCC>
