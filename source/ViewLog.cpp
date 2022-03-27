@@ -7,7 +7,7 @@ ViewLog::ViewLog(QQuickView* parent)
 
 void ViewLog::initialize()
 {
-	//setResizeMode(QQuickView::SizeRootObjectToView);
+	setResizeMode(QQuickView::SizeRootObjectToView);
 	setSource(QUrl("qrc:///ViewLog.qml"));
 	show();
 }
