@@ -73,6 +73,9 @@
     <ClCompile Include="source\ViewLog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="source\Logger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="resource\qml.qrc">
@@ -110,6 +113,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="header\ViewLog.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="header\Logger.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
