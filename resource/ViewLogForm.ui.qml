@@ -4,6 +4,7 @@ import QtQuick.Controls 6.2
 Item {
     width: 800
     height: 200
+    property alias textArea: textArea
 
     ScrollView {
         id: scrollView
@@ -12,7 +13,7 @@ Item {
         TextArea {
             id: textArea
             anchors.fill: parent
-            placeholderText: "output log"
+            placeholderText: "no log"
             placeholderTextColor: "#800073ff"
             readOnly: true
         }

@@ -10,14 +10,12 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-    QScopedPointer<Logger> example(new Logger);
-
     QGuiApplication app(argc, argv);
 
     //Qtで使用するグラフィックスライブラリを指定する
     QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
 
-    qmlRegisterSingletonInstance("Qt.example.qobjectSingleton", 1, 0, "MyApi", example.get());
+    qmlRegisterSingletonInstance("Qt.example.qobjectSingleton", 1, 0, "MyApi", &Logger::getInstance());
     qmlRegisterType<SceneGraph>("SceneGraph", 1, 0, "SceneGraph");
 
     WindowMain mainWindow(nullptr);

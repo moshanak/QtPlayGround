@@ -1,25 +1,27 @@
 #ifndef LOGGER_H
 #define LOGGER_H
 #include <QObject>
+#include <QString>
 
 class Logger : public QObject
 {
     Q_OBJECT
-        Q_PROPERTY(int someProperty READ someProperty WRITE setSomeProperty NOTIFY somePropertyChanged)
+        
+    Q_PROPERTY(QString logs READ getLogs WRITE setLogs NOTIFY logsChanged)
 
 public:
-    explicit Logger(QObject* parent = nullptr) : QObject(parent) {}
+    static Logger& getInstance();
 
-    Q_INVOKABLE int doSomething();
-
-    int someProperty() const { return m_someProperty; }
-    void setSomeProperty(int val);
+    QString getLogs() const { return logs_; }
+    void setLogs(QString logs);
 
 signals:
-    void somePropertyChanged(int newValue);
+    void logsChanged();
 
 private:
-    int m_someProperty = 0;
+    Logger();
+
+    QString logs_;
 };
 
 

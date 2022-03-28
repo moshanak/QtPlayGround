@@ -1,14 +1,19 @@
 #include "Logger.h"
 
-int Logger::doSomething()
-{
-    setSomeProperty(5);
-    return m_someProperty;
+Logger& Logger::getInstance() {
+    static Logger instance_;
+    return instance_;
 }
 
-void Logger::setSomeProperty(int val) {
-    if (m_someProperty != val) {
-        m_someProperty = val;
-        emit somePropertyChanged(val);
+void Logger::setLogs(QString logs)
+{
+    if (logs_ != logs) {
+        logs_ = logs;
+        emit logsChanged();
     }
+}
+
+Logger::Logger()
+    :QObject(nullptr)
+{
 }
