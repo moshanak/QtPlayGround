@@ -12,7 +12,6 @@ Item {
 
         TextArea {
             id: textArea
-            anchors.fill: parent
             placeholderText: "no log"
             placeholderTextColor: "#800073ff"
             readOnly: true

@@ -2,6 +2,7 @@
 #include "SceneGraphRenderer.h"
 #include "SceneMain.h"
 #include "SceneMainRenderer.h"
+#include "Logger.h"
 #include <QQuickWindow>
 #include <QRunnable>
 
@@ -89,4 +90,10 @@ void SceneGraph::sync()
     sceneGraphRenderer_->setViewportSize(window()->size() * window()->devicePixelRatio());
     sceneGraphRenderer_->setWindow(window());
     sceneGraphRenderer_->setCurrentSceneName(currentSceneName_);
+
+    static int aaa = 0;
+    ++aaa;
+    //Logger::getInstance().setLogs(QString::number(aaa));
+    Logger::info("aaaaaaaaaaaaaaaaaaaa" + QString::number(aaa));
+    Logger::error("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" + QString::number(aaa));
 }

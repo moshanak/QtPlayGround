@@ -11,9 +11,12 @@ class Logger : public QObject
 
 public:
     static Logger& getInstance();
+    static void info(const QString& log);
+    static void error(const QString& log);
 
     QString getLogs() const { return logs_; }
     void setLogs(QString logs);
+
 
 signals:
     void logsChanged();

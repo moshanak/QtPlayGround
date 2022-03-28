@@ -5,6 +5,20 @@ Logger& Logger::getInstance() {
     return instance_;
 }
 
+void Logger::info(const QString& log)
+{
+    Logger& logger = getInstance();
+    const QString addLog = logger.logs_ + "[INFO] " + log + "\n";
+    logger.setLogs(addLog);
+}
+
+void Logger::error(const QString& log)
+{
+    Logger& logger = getInstance();
+    const QString addLog = logger.logs_ + "[ERROR] " + log + "\n";
+    logger.setLogs(addLog);
+}
+
 void Logger::setLogs(QString logs)
 {
     if (logs_ != logs) {

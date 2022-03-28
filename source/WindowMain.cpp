@@ -20,7 +20,7 @@ void WindowMain::initialize()
     viewMain->initialize();
     views_.push_back(viewMain);
 
-    std::shared_ptr<ViewLog> viewLog = std::make_shared<ViewLog>(this);
+    std::shared_ptr<ViewLog> viewLog = std::make_shared<ViewLog>(nullptr);
     viewLog->initialize();
     views_.push_back(viewLog);
 }
