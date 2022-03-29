@@ -15,6 +15,7 @@ Item {
             placeholderText: "no log"
             placeholderTextColor: "#800073ff"
             readOnly: true
+            selectByMouse: true
         }
     }
 }
