@@ -1,8 +1,8 @@
 import QtQuick 2.4
-import Qt.example.qobjectSingleton 1.0
+import Logger 1.0
 
 ViewLogForm {
-    textArea.text: MyApi.logs
+    textArea.text: Logger.logs
 
     textArea.onTextChanged: {
         if(isAutoScroll) {
@@ -19,7 +19,7 @@ ViewLogForm {
 
     buttonClearLogs.onClicked: {
         currentLinePosition = 0.0
-        MyApi.logs = ""
+        Logger.logs = ""
     }
 
     onIsAutoScrollChanged: {

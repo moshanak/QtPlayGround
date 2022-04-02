@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     //Qtで使用するグラフィックスライブラリを指定する
     QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
 
-    qmlRegisterSingletonInstance("Qt.example.qobjectSingleton", 1, 0, "MyApi", &Logger::getInstance());
+    qmlRegisterSingletonInstance("Logger", 1, 0, "Logger", &Logger::getInstance());
     qmlRegisterType<SceneGraph>("SceneGraph", 1, 0, "SceneGraph");
 
     WindowMain mainWindow(nullptr);
