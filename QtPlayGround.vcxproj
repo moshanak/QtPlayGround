@@ -113,6 +113,12 @@
     <ClCompile Include="source\GLSL.cpp" />
     <ClCompile Include="source\GLSLManager.cpp" />
     <ClCompile Include="source\GLSLPassthrough.cpp" />
+    <ClCompile Include="source\Logger.cpp">
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(Filename).moc</QtMocFileName>
+      <DynamicSource Condition="'$(Configuration)|$(Platform)'=='Release|x64'">input</DynamicSource>
+      <QtMocFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(Filename).moc</QtMocFileName>
+    </ClCompile>
     <ClCompile Include="source\main.cpp" />
     <ClCompile Include="source\SceneBase.cpp" />
     <ClCompile Include="source\SceneBaseRenderer.cpp" />
@@ -120,6 +126,7 @@
     <ClCompile Include="source\SceneGraphRenderer.cpp" />
     <ClCompile Include="source\SceneMain.cpp" />
     <ClCompile Include="source\ViewBase.cpp" />
+    <ClCompile Include="source\ViewLog.cpp" />
     <ClCompile Include="source\ViewMain.cpp" />
     <ClCompile Include="source\WindowMain.cpp" />
   </ItemGroup>
@@ -127,6 +134,8 @@
     <QtRcc Include="resource\qml.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resource\ViewLog.qml" />
+    <None Include="resource\ViewLogForm.ui.qml" />
     <None Include="resource\ViewMain.qml" />
     <None Include="resource\WindowMain.qml" />
   </ItemGroup>
@@ -147,8 +156,10 @@
     <ClInclude Include="header\GLSL.h" />
     <ClInclude Include="header\GLSLManager.h" />
     <ClInclude Include="header\GLSLPassthrough.h" />
+    <QtMoc Include="header\Logger.h" />
     <ClInclude Include="header\SceneBase.h" />
     <ClInclude Include="header\SceneMainRenderer.h" />
+    <QtMoc Include="header\ViewLog.h" />
     <QtMoc Include="header\SceneGraph.h" />
     <ClInclude Include="header\SceneBaseRenderer.h" />
     <ClInclude Include="header\SceneMain.h" />

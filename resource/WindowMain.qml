@@ -1,6 +1,6 @@
 ﻿import QtQuick 2.3
 
 Item {
-    width: 200
-    height: 100
+    width: 1920
+    height: 1080
 }

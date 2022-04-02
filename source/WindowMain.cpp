@@ -1,5 +1,6 @@
 #include "WindowMain.h"
 #include "ViewMain.h"
+#include "ViewLog.h"
 
 WindowMain::WindowMain(QWindow* parent)
 	:QQuickView(parent)
@@ -15,7 +16,11 @@ void WindowMain::initialize()
     setSource(QUrl("qrc:///WindowMain.qml"));
     show();
 
-	std::shared_ptr<ViewMain> mainView = std::make_shared<ViewMain>(this);
-    mainView->initialize();
-	views_.push_back(mainView);
+    std::shared_ptr<ViewMain> viewMain = std::make_shared<ViewMain>(this);
+    viewMain->initialize();
+    views_.push_back(viewMain);
+
+    std::shared_ptr<ViewLog> viewLog = std::make_shared<ViewLog>(nullptr);
+    viewLog->initialize();
+    views_.push_back(viewLog);
 }
