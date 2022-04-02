@@ -2,6 +2,7 @@
 #define LOGGER_H
 #include <QObject>
 #include <QString>
+#include <mutex>
 
 class Logger : public QObject
 {
@@ -25,6 +26,7 @@ private:
     Logger();
 
     QString logs_;
+    std::mutex mtx_;
 };
 
 

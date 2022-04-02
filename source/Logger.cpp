@@ -21,6 +21,7 @@ void Logger::error(const QString& log)
 
 void Logger::setLogs(QString logs)
 {
+    std::lock_guard<std::mutex> lock(mtx_);
     if (logs_ != logs) {
         logs_ = logs;
         emit logsChanged();
