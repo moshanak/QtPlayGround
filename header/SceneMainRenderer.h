@@ -5,9 +5,9 @@
 class SceneMainRenderer : public SceneBaseRenderer
 {
 public:
-    SceneMainRenderer() = delete;
-    SceneMainRenderer(const QString& sceneName);
+	SceneMainRenderer() = delete;
+	SceneMainRenderer(const QString& sceneName);
 
-    void draw() final;
+	void draw() final;
 };
-#endif //SCENEMAINRENDERER_H
+#endif // SCENEMAINRENDERER_H

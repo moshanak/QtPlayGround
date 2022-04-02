@@ -1,10 +1,10 @@
 #include "ActorTriangleRenderer.h"
 #include "GLSLManager.h"
-#include <vector>
 #include <array>
+#include <vector>
 
 ActorTriangleRenderer::ActorTriangleRenderer(const int& actorID)
-	:ActorBaseRenderer(actorID)
+	: ActorBaseRenderer(actorID)
 {
 }
 
@@ -13,7 +13,7 @@ void ActorTriangleRenderer::draw()
 	glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	std::vector<float> coords{ 0.5f, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f, -0.5f, 0.0f, 0.0f };
+	std::vector<float> coords{0.5f, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f, -0.5f, 0.0f, 0.0f};
 
 	GLuint coordinateBuffer_ = 0;
 	glGenBuffers(1, &coordinateBuffer_);

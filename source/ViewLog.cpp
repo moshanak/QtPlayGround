@@ -1,7 +1,7 @@
 #include "ViewLog.h"
 
 ViewLog::ViewLog(QQuickView* parent)
-	:ViewBase(parent)
+	: ViewBase(parent)
 {
 }
 

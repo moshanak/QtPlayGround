@@ -5,14 +5,15 @@
 class ActorBaseRenderer
 {
 public:
-    ActorBaseRenderer() = delete;
-    ActorBaseRenderer(const int& actorID);
-    virtual ~ActorBaseRenderer();
+	ActorBaseRenderer() = delete;
+	ActorBaseRenderer(const int& actorID);
+	virtual ~ActorBaseRenderer();
 
-    virtual void draw() = 0;
+	virtual void draw() = 0;
 
-    const int& getActorID() const { return actorID_; }
+	const int& getActorID() const { return actorID_; }
+
 private:
-    int actorID_;
+	int actorID_;
 };
-#endif //ACTORBASERENDERER_H
+#endif // ACTORBASERENDERER_H

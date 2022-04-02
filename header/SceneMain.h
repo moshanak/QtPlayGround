@@ -1,16 +1,16 @@
 #ifndef SCENEMAIN_H
 #define SCENEMAIN_H
 #include "SceneBase.h"
-#include <vector>
 #include <memory>
+#include <vector>
 class ActorBase;
 
 class SceneMain : public SceneBase
 {
 public:
-    SceneMain() = delete;
-    SceneMain(const QString& sceneName, std::shared_ptr<SceneBaseRenderer> sceneRenderer);
+	SceneMain() = delete;
+	SceneMain(const QString& sceneName, std::shared_ptr<SceneBaseRenderer> sceneRenderer);
 
-    void initialize();
+	void initialize();
 };
-#endif //SCENEMAIN_H
+#endif // SCENEMAIN_H

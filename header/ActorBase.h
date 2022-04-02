@@ -7,14 +7,14 @@ class ActorBaseRenderer;
 class ActorBase
 {
 public:
-    ActorBase() = delete;
-    ActorBase(const int actorID, std::shared_ptr<ActorBaseRenderer> actorRenderer);
-    virtual ~ActorBase();
+	ActorBase() = delete;
+	ActorBase(const int actorID, std::shared_ptr<ActorBaseRenderer> actorRenderer);
+	virtual ~ActorBase();
 
-    const int& getActorID() const { return actorID_; }
+	const int& getActorID() const { return actorID_; }
 
 private:
-    int actorID_;
-    std::shared_ptr<ActorBaseRenderer> actorRenderer_;
+	int actorID_;
+	std::shared_ptr<ActorBaseRenderer> actorRenderer_;
 };
-#endif //ACTORBASE_H
+#endif // ACTORBASE_H

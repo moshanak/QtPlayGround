@@ -1,6 +1,7 @@
 #include "GLSLPassthrough.h"
 
-void GLSLPassthrough::build() {
+void GLSLPassthrough::build()
+{
 	std::string vs = R"(
 #version 460
 layout (location = 0) in vec3 VertexPosition;

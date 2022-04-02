@@ -3,7 +3,8 @@
 #include <GL/glew.h>
 #include <string>
 
-class GLSL {
+class GLSL
+{
 public:
 	GLSL();
 	virtual ~GLSL();
@@ -22,4 +23,4 @@ protected:
 	GLuint program_;
 	GLuint shader_;
 };
-#endif //GLSL_H
+#endif // GLSL_H

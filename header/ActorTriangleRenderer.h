@@ -4,9 +4,9 @@
 class ActorTriangleRenderer : public ActorBaseRenderer
 {
 public:
-    ActorTriangleRenderer() = delete;
-    ActorTriangleRenderer(const int& actorID);
+	ActorTriangleRenderer() = delete;
+	ActorTriangleRenderer(const int& actorID);
 
-    void draw() final;
+	void draw() final;
 };
-#endif //ACTORTRIANGLETESTRENDERER_H
+#endif // ACTORTRIANGLETESTRENDERER_H

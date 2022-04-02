@@ -19,8 +19,8 @@ Item {
         id: scrollView
         anchors.fill: parent
 
-        // ScrollBar.vertical ‚ð ViewLog.qml ‚ÖŒöŠJ‚·‚é•û–@‚ª•ª‚©‚ç‚È‚©‚Á‚½‚½‚ß ViewLogForm.ui.qml ‚Ö’¼‚ÉŽÀ‘•B
-        // ƒfƒUƒCƒi[‚ÅŠJ‚­‚Æ‚«‚ÍƒGƒ‰[‚ð–h‚®‚½‚ß‚ÉƒRƒƒ“ƒgƒAƒEƒg‚·‚é‚±‚ÆB
+        // ScrollBar.vertical ã‚’ ViewLog.qml ã¸å…¬é–‹ã™ã‚‹æ–¹æ³•ãŒåˆ†ã‹ã‚‰ãªã‹ã£ãŸãŸã‚ ViewLogForm.ui.qml ã¸ç›´ã«å®Ÿè£…ã€‚
+        // ãƒ‡ã‚¶ã‚¤ãƒŠãƒ¼ã§é–‹ãã¨ãã¯ã‚¨ãƒ©ãƒ¼ã‚’é˜²ããŸã‚ã«ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã™ã‚‹ã“ã¨ã€‚
         ScrollBar.vertical{
             policy: ScrollBar.AlwaysOn
             onPositionChanged: {

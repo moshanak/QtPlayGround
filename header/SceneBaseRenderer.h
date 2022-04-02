@@ -9,20 +9,20 @@ class ActorBaseRenderer;
 class SceneBaseRenderer
 {
 public:
-    SceneBaseRenderer() = delete;
-    SceneBaseRenderer(const QString& sceneName);
-    virtual ~SceneBaseRenderer();
+	SceneBaseRenderer() = delete;
+	SceneBaseRenderer(const QString& sceneName);
+	virtual ~SceneBaseRenderer();
 
-    virtual void draw() = 0;
+	virtual void draw() = 0;
 
-    void addActorRenderer(std::shared_ptr<ActorBaseRenderer> actorRenderer);
+	void addActorRenderer(std::shared_ptr<ActorBaseRenderer> actorRenderer);
 
-    const QString& getSceneName() const { return sceneName_; }
+	const QString& getSceneName() const { return sceneName_; }
 
 protected:
-    std::map<int, std::shared_ptr<ActorBaseRenderer>> actorRenderers_;
+	std::map<int, std::shared_ptr<ActorBaseRenderer>> actorRenderers_;
 
 private:
-    QString sceneName_;
+	QString sceneName_;
 };
-#endif //SCENEBASERENDERER_H
+#endif // SCENEBASERENDERER_H
