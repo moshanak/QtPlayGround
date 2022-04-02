@@ -4,10 +4,10 @@
 
 class ViewMain : public ViewBase
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    ViewMain() = delete;
-    explicit ViewMain(QQuickView* parent);
-    void initialize();
+	ViewMain() = delete;
+	explicit ViewMain(QQuickView* parent);
+	void initialize();
 };
-#endif //VIEWMAIN_H
+#endif // VIEWMAIN_H

@@ -4,11 +4,11 @@
 
 class ViewLog : public ViewBase
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ViewLog() = delete;
-    explicit ViewLog(QQuickView* parent);
-    void initialize();
+	ViewLog() = delete;
+	explicit ViewLog(QQuickView* parent);
+	void initialize();
 };
-#endif //VIEWLOG_H
+#endif // VIEWLOG_H

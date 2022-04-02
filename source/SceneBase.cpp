@@ -1,7 +1,7 @@
 #include "SceneBase.h"
-#include "SceneBaseRenderer.h"
 #include "ActorBase.h"
 #include "ActorBaseRenderer.h"
+#include "SceneBaseRenderer.h"
 
 SceneBase::SceneBase(const QString& sceneName, std::shared_ptr<SceneBaseRenderer> sceneRenderer)
 	: sceneName_(sceneName)
@@ -9,9 +9,7 @@ SceneBase::SceneBase(const QString& sceneName, std::shared_ptr<SceneBaseRenderer
 {
 }
 
-SceneBase::~SceneBase()
-{
-}
+SceneBase::~SceneBase() {}
 
 void SceneBase::addActor(std::shared_ptr<ActorBase> actor, std::shared_ptr<ActorBaseRenderer> actorRenderer)
 {

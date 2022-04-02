@@ -2,13 +2,11 @@
 #include "ActorBaseRenderer.h"
 
 SceneBaseRenderer::SceneBaseRenderer(const QString& sceneName)
-	:sceneName_(sceneName)
+	: sceneName_(sceneName)
 {
 }
 
-SceneBaseRenderer::~SceneBaseRenderer()
-{
-}
+SceneBaseRenderer::~SceneBaseRenderer() {}
 
 void SceneBaseRenderer::addActorRenderer(std::shared_ptr<ActorBaseRenderer> actorRenderer)
 {

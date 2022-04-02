@@ -2,13 +2,14 @@
 #include "ActorBaseRenderer.h"
 
 SceneMainRenderer::SceneMainRenderer(const QString& sceneName)
-	:SceneBaseRenderer(sceneName)
+	: SceneBaseRenderer(sceneName)
 {
 }
 
 void SceneMainRenderer::draw()
 {
-	for (auto& actorRenderer : actorRenderers_) {
+	for (auto& actorRenderer : actorRenderers_)
+	{
 		actorRenderer.second->draw();
 	}
 }

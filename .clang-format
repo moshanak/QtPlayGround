@@ -1,47 +1,16 @@
-# Visual Studio generated .clang-format file
-
-# The style options in this file are a best effort attempt to replicate the
-# current IDE formatting configuration from Tools > Options. The following
-# style options, however, should be verified:
-# AfterClass, AfterControlStatement, AfterEnum, AfterFunction, AfterNamespace, 
-# AfterStruct, AfterUnion
-
+# 未記入の項目のデフォルト設定を決める
+BasedOnStyle: MicroSoft
+# private, public 等のアクセス指定子の表示位置
 AccessModifierOffset: -4
-AlignAfterOpenBracket: DontAlign
-AllowShortBlocksOnASingleLine: true
-AllowShortFunctionsOnASingleLine: All
-BasedOnStyle: LLVM
-BraceWrapping:
-  AfterClass: false    # TODO: verify
-  AfterControlStatement: false    # TODO: verify
-  AfterEnum: false    # TODO: verify
-  AfterFunction: false    # TODO: verify
-  AfterNamespace: false    # TODO: verify
-  AfterStruct: false    # TODO: verify
-  AfterUnion: false    # TODO: verify
-  BeforeCatch: true
-  BeforeElse: true
-  IndentBraces: false
-  SplitEmptyFunction: true
-  SplitEmptyRecord: true
-BreakBeforeBraces: Custom
-ColumnLimit: 0
-Cpp11BracedListStyle: false
-FixNamespaceComments: false
-IndentCaseLabels: false
-IndentPPDirectives: None
+# 初期化子の表示スタイル
+BreakConstructorInitializers: BeforeComma
+# インデントの幅
 IndentWidth: 4
-MaxEmptyLinesToKeep: 10
-NamespaceIndentation: All
-PointerAlignment: Left
-SortIncludes: false
-SortUsingDeclarations: false
-SpaceAfterCStyleCast: false
-SpaceBeforeAssignmentOperators: true
-SpaceBeforeParens: ControlStatements
-SpaceInEmptyParentheses: false
-SpacesInCStyleCastParentheses: false
-SpacesInParentheses: false
-SpacesInSquareBrackets: false
+# タブの幅
 TabWidth: 4
+# インデントがスペースではなくタブになる
 UseTab: true
+# 関数を１行で表示するかどうか
+AllowShortFunctionsOnASingleLine: Inline
+# ポインタ*や参照&の表示位置
+PointerAlignment: Left

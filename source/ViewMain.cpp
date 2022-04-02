@@ -1,9 +1,10 @@
 #include "ViewMain.h"
 
 ViewMain::ViewMain(QQuickView* parent)
-	:ViewBase(parent)
+	: ViewBase(parent)
 {
-	if (parent) {
+	if (parent)
+	{
 		connect(parent, &QQuickWindow::widthChanged, this, &ViewBase::setWidth);
 		connect(parent, &QQuickWindow::heightChanged, this, &ViewBase::setHeight);
 	}

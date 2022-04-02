@@ -6,14 +6,14 @@ class ViewBase;
 
 class WindowMain : public QQuickView
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    WindowMain() = delete;
-    explicit WindowMain(QWindow* parent);
+	WindowMain() = delete;
+	explicit WindowMain(QWindow* parent);
 
-    void initialize();
+	void initialize();
 
 private:
-    std::vector<std::shared_ptr<ViewBase>> views_;
+	std::vector<std::shared_ptr<ViewBase>> views_;
 };
-#endif //WINDOWMAIN_H
+#endif // WINDOWMAIN_H
