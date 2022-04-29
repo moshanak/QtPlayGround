@@ -1,6 +1,7 @@
-#ifndef ACTORTRIANGLETESTRENDERER_H
-#define ACTORTRIANGLETESTRENDERER_H
+#ifndef ACTORBACKGROUNDRENDERER_H
+#define ACTORBACKGROUNDRENDERER_H
 #include "ActorBaseRenderer.h"
+
 class ActorBackgroundRenderer : public ActorBaseRenderer
 {
 public:
@@ -9,4 +10,4 @@ public:
 
 	void draw() final;
 };
-#endif // ACTORTRIANGLETESTRENDERER_H
+#endif // ACTORBACKGROUNDRENDERER_H
