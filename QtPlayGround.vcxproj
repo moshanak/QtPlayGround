@@ -106,6 +106,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="header\SceneMainRenderer.cpp" />
+    <ClCompile Include="source\ActorBackground.cpp" />
+    <ClCompile Include="source\ActorBackgroundRenderer.cpp" />
     <ClCompile Include="source\ActorBase.cpp" />
     <ClCompile Include="source\ActorBaseRenderer.cpp" />
     <ClCompile Include="source\ActorTriangle.cpp" />
@@ -149,6 +151,8 @@
     <QtMoc Include="header\ViewMain.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="header\ActorBackground.h" />
+    <ClInclude Include="header\ActorBackgroundRenderer.h" />
     <ClInclude Include="header\ActorBase.h" />
     <ClInclude Include="header\ActorBaseRenderer.h" />
     <ClInclude Include="header\ActorTriangle.h" />
