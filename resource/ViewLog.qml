@@ -1,5 +1,5 @@
-import QtQuick 2.4
-import Logger 1.0
+import QtQuick
+import Logger
 
 ViewLogForm {
     textArea.text: Logger.logs
