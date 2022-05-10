@@ -1,8 +1,8 @@
 #include "SceneMain.h"
-#include "ActorTriangle.h"
-#include "ActorTriangleRenderer.h"
 #include "ActorBackground.h"
 #include "ActorBackgroundRenderer.h"
+#include "ActorTriangle.h"
+#include "ActorTriangleRenderer.h"
 
 SceneMain::SceneMain(const QString& sceneName, std::shared_ptr<SceneBaseRenderer> sceneRenderer)
 	: SceneBase(sceneName, sceneRenderer)
@@ -12,10 +12,8 @@ SceneMain::SceneMain(const QString& sceneName, std::shared_ptr<SceneBaseRenderer
 void SceneMain::initialize()
 {
 	int actorID = 0;
-	std::shared_ptr<ActorBackgroundRenderer> actorBackgroundRenderer =
-		std::make_shared<ActorBackgroundRenderer>(actorID);
-	std::shared_ptr<ActorBackground> actorBackground =
-		std::make_shared<ActorBackground>(actorID, actorBackgroundRenderer);
+	std::shared_ptr<ActorBackgroundRenderer> actorBackgroundRenderer = std::make_shared<ActorBackgroundRenderer>(actorID);
+	std::shared_ptr<ActorBackground> actorBackground = std::make_shared<ActorBackground>(actorID, actorBackgroundRenderer);
 	addActor(actorBackground, actorBackgroundRenderer);
 
 	actorID = 1;

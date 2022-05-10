@@ -17,7 +17,7 @@ SceneGraph::SceneGraph()
 	connect(this, &QQuickItem::windowChanged, this, &SceneGraph::handleWindowChanged);
 }
 
-void SceneGraph::handleWindowChanged(QQuickWindow *win)
+void SceneGraph::handleWindowChanged(QQuickWindow* win)
 {
 	if (win)
 	{
@@ -45,14 +45,11 @@ void SceneGraph::releaseResources()
 	class CleanupJob : public QRunnable
 	{
 	public:
-		CleanupJob(std::unique_ptr<SceneGraphRenderer> &&renderer)
+		CleanupJob(std::unique_ptr<SceneGraphRenderer>&& renderer)
 			: sceneGraphRenderer_(std::move(renderer))
 		{
 		}
-		void run() override
-		{
-			sceneGraphRenderer_.release();
-		}
+		void run() override { sceneGraphRenderer_.release(); }
 
 	private:
 		std::unique_ptr<SceneGraphRenderer> sceneGraphRenderer_;
@@ -77,8 +74,7 @@ void SceneGraph::sync()
 		// beforeRendering のあとに呼ばれるシグナルを接続する
 		// RHIを使う場合、メインレンダリングパスのコマンドバッファに記録することが可能(vulkan,directxで考慮が必要)
 		// OpenGLのAPIを直接呼びたい場合は、このシグナルスロットではなく、前述のbeforeRenderingかafterRenderingシグナルを使う
-		connect(window(), &QQuickWindow::beforeRenderPassRecording, sceneGraphRenderer_.get(),
-				&SceneGraphRenderer::paint, Qt::DirectConnection);
+		connect(window(), &QQuickWindow::beforeRenderPassRecording, sceneGraphRenderer_.get(), &SceneGraphRenderer::paint, Qt::DirectConnection);
 	}
 
 	//<todo>: GUIからイベントをもらってから、シーンを作る仕組みにした方がよい
