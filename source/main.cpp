@@ -1,7 +1,7 @@
 #include "Logger.h"
 #include "SceneGraph.h"
 #include "WindowMain.h"
-#include <QGuiApplication>
+#include <QApplication>
 
 int main(int argc, char* argv[])
 {
@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-	QGuiApplication app(argc, argv);
+	QApplication app(argc, argv);
 
 	// Qtで使用するグラフィックスライブラリを指定する
 	QQuickWindow::setGraphicsApi(QSGRendererInterface::OpenGL);
